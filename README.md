@@ -39,6 +39,26 @@ npx wdio wdio.conf.ts --spec src/features/syngrisi/basic_example.feature
 
 To review the test results, open your browser and navigate to the default Syngrisi dashboard URL: [http://localhost:3000](http://localhost:3000).
 
+## Configuration
+
+This project utilizes the `wdio-syngrisi-cucumber-service` which can be configurable using `service` section in the [./wdio.conf.ts](./wdio.conf.ts) file  as a regular `WebdriverIO` service:
+```js
+[
+    'syngrisi-cucumber',
+    {
+        endpoint: `<your-syngrisi-server-url>`, // the Syngrisi server url, default is http://localhost:3000
+        apikey: `<your-api-key>`, // Autorization API key, you can obtain it from your Syngrisi account settings 
+        app: `<your-project-name>`, // Specify the project name 
+        branch: '<your-branch>', // The version control branch name.
+        runname: `<your-run-name>`, // Run name allows you to group tests by runs using Syngrisi UI  
+        runident: `<your-run-ident>`, // Unique run identifier
+        tag: '<visual-check-tag>', // if you set this tag in the Gherkin scenario, `wdio-syngrisi-cucumber-service` 
+                                   // will start and stop the visual sessions and therefore perform visual checks,
+                                   // if tags are empty the visual session will be created for all scenarios despite the existence of visual checks
+    },
+]
+```
+
 ## Syngrisi Visual Regression Steps
 
 All the visual regression steps are defined in the [src/steps/syngrisi.ts](src/steps/syngrisi.ts) file. 

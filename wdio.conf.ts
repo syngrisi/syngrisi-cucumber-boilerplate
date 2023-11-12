@@ -3,8 +3,21 @@ import path from 'node:path';
 
 import { hooks } from './src/support/hooks.js';
 
-const dirname = url.fileURLToPath(new URL('.', import.meta.url));
-
+const syngrisiHost = process.env.SYNGRISI_HOST || 'localhost';
+const syngrisiPort = process.env.SYNGRISI_HOST || '3000';
+const syngrisiService = [
+    'syngrisi-cucumber',
+    {
+        endpoint: `http://${syngrisiHost}:${syngrisiPort}/`,
+        apikey: process.env.SYNGRISI_API_KEY || '',
+        app: process.env.SYNGRISI_PROJECT || 'My project',
+        branch: 'master',
+        runname: process.env.RUN_NAME,
+        runident: process.env.RUN_IDENT,
+        // if tag is empty the visual session will be created for all scenarios
+        tag: '@visual',
+    },
+];
 export const config: WebdriverIO.Config = {
     //
     // ====================
@@ -14,6 +27,7 @@ export const config: WebdriverIO.Config = {
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
     runner: 'local',
+    automationProtocol: 'webdriver',
     //
     // ==================
     // Specify Test Files
@@ -60,6 +74,11 @@ export const config: WebdriverIO.Config = {
         maxInstances: 5,
         //
         browserName: 'chrome',
+        browserVersion: '118.0.5993.0',
+        'goog:chromeOptions': {
+            args: ['--window-size=1920,1080'],
+            excludeSwitches: ['enable-automation'],
+        },
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -72,8 +91,8 @@ export const config: WebdriverIO.Config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'trace',
-    outputDir: path.join(dirname, '/logs'),
+    logLevel: 'debug',
+    // outputDir: path.join(__dirname, '/logs'),
     //
     // Set specific log levels per logger
     // loggers:
@@ -114,7 +133,10 @@ export const config: WebdriverIO.Config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    // services: [],
+
+    services: [
+        syngrisiService,
+    ],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -161,9 +183,7 @@ export const config: WebdriverIO.Config = {
         profile: [],
         // <string[]> (file/dir) require files before executing features
         require: [
-            './src/steps/given.ts',
-            './src/steps/then.ts',
-            './src/steps/when.ts',
+            './src/steps/*.ts',
             // Or search a (sub)folder for JS files with a wildcard
             // works since version 1.1 of the wdio-cucumber-framework
             // './src/**/*.js',
@@ -181,7 +201,7 @@ export const config: WebdriverIO.Config = {
         // <boolean> add cucumber tags to feature or scenario name
         tagsInTitle: false,
         // <number> timeout for step definitions
-        timeout: 20000,
+        timeout: 540000,
     } as WebdriverIO.CucumberOpts,
     ...hooks,
 };

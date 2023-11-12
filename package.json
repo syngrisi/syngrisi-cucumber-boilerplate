@@ -1,5 +1,6 @@
 {
   "author": "Christian Bromann <christian@saucelabs.com>",
+
   "license": "MIT",
   "name": "cucumber-boilerplate",
   "version": "2.0.0",
@@ -7,7 +8,11 @@
   "homepage": "https://github.com/webdriverio/cucumber-boilerplate",
   "type": "module",
   "contributors": [
-    "W. van Kuipers <github@pwnd.nl>"
+    "W. van Kuipers <github@pwnd.nl>",
+    {
+      "name": "Viktar Silakou",
+      "email": "1105714@gmail.com"
+    }
   ],
   "repository": {
     "type": "git",
@@ -27,7 +32,7 @@
   ],
   "scripts": {
     "clean": "read -p \"Are you sure you want to clean the project? [y/n] \" REPLY; if [[ $REPLY =~ ^[Yy]$ ]]; then rm -R .git .github demo-app test .codeclimate.yml .travis.yml jest.json wdio.BUILD.conf.js src/features/**; fi",
-    "test": "run-s test:*",
+    "test": "wdio wdio.conf.ts --spec ./src/features/syngrisi/*.feature",
     "test:lint": "eslint 'src/**/*.ts' 'test/**/*.js!(setup.js)'",
     "test:unit": "jest --config=jest.config.cjs --detectOpenHandles",
     "test:features": "wdio run wdio.BUILD.conf.ts",
@@ -56,9 +61,10 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
     "wdio-syngrisi-cucumber-service": "^2.1.25-alpha.0",
-    "webdriverio": "^8.19.0"
+    "webdriverio": "^8.19.0",
+    "wdio-image-comparison-service": "^5.0.3",
+    "@babel/runtime": "^7.23.2"
   },
   "dependencies": {
-    "@babel/runtime": "^7.23.2"
   }
 }

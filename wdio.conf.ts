@@ -1,6 +1,3 @@
-import url from 'node:url';
-import path from 'node:path';
-
 import { hooks } from './src/support/hooks.js';
 
 const syngrisiHost = process.env.SYNGRISI_HOST || 'localhost';
@@ -136,6 +133,7 @@ export const config: WebdriverIO.Config = {
 
     services: [
         syngrisiService,
+        'image-comparison',
     ],
     //
     // Framework you want to run your specs with.

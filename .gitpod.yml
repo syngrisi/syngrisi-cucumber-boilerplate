@@ -2,12 +2,18 @@ image: gitpod/workspace-mongodb
 
 tasks:
   - init: 'mkdir -p /workspace/data && mongod --dbpath /workspace/data'
-  - init: 'npm i'
+  - name: 'Install'
+    init: 'npm i'
+  - name: 'Syngrisi'
+    init: gp sync-await bundle
     command: 'npx sy'
+  - name: 'Chromedriver'
+    init: gp sync-await bundle
+    command: 'npx chromedriver --port=9950'
 #  - init: 'echo "Starting MongoDB" && mongod --fork --logpath /tmp/mongod.log'
 ports:
   - port: 3000
-    onOpen: open-browser
+    onOpen: notify
 
 github:
   prebuilds:

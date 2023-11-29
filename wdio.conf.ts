@@ -25,6 +25,8 @@ export const config: WebdriverIO.Config = {
     // on a remote machine).
     runner: 'local',
     automationProtocol: 'webdriver',
+    hostname: process.env.GITPOD_HOST ? 'localhost' : undefined,
+    port: process.env.GITPOD_HOST ? 9950 : undefined,
     //
     // ==================
     // Specify Test Files
@@ -76,6 +78,9 @@ export const config: WebdriverIO.Config = {
             args: ['--window-size=1920,1080'],
             excludeSwitches: ['enable-automation'],
         },
+        // 'wdio:chromedriverOptions': {
+        //     port: 9950,
+        // },
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs

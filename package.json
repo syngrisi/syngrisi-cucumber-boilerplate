@@ -55,6 +55,7 @@
     "@wdio/local-runner": "^8.19.0",
     "@wdio/spec-reporter": "^8.19.0",
     "@wdio/static-server-service": "^8.19.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.51.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.28.1",
@@ -68,10 +69,10 @@
     "typescript": "^5.2.2",
     "wdio-image-comparison-service": "^5.0.3",
     "wdio-syngrisi-cucumber-service": "^2.1.25-alpha.0",
-    "webdriverio": "^8.19.0",
-    "cross-env": "^7.0.3"
+    "webdriverio": "^8.19.0"
   },
   "dependencies": {
+    "chromedriver": "^119.0.1",
     "pm2": "^5.3.0",
     "syngrisi": "^2.1.33-alpha.0"
   }

@@ -36,7 +36,7 @@ npm test
 
 To run a specific feature, use:
 
-```shell
+```shell {"background":"false","name":"BASIC TEST EXAMPLE","promptEnv":"true"}
 npx wdio wdio.conf.ts --spec src/features/syngrisi/basic_example.feature
 ```
 

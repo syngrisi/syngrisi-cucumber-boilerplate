@@ -1,16 +1,19 @@
 image: gitpod/workspace-mongodb
 
 tasks:
-  - name: 'Install Deps'
-    init: 'npm i'
-  - name: 'Start Mongo'
-    init: 'mkdir -p /workspace/data && mongod --dbpath /workspace/data'
-  - name: 'Start Syngrisi'
-    init: gp sync-await bundle
-    command: 'npx sy'
-  - name: 'Chromedriver'
-    init: gp sync-await bundle
-    command: 'npx chromedriver --port=9950'
+  - name: Install Deps
+    init: npm i && gp sync-done install
+  - name: Start Mongo
+    init: >
+      mkdir -p /workspace/data && 
+      mongod --dbpath /workspace/data &
+      gp sync-done mongo
+  - name: Start Syngrisi
+    init: gp sync-await mongo
+    command: npx sy
+  - name: Chromedriver
+    init: gp sync-await install
+    command: npx chromedriver --port=9950
 #  - init: 'echo "Starting MongoDB" && mongod --fork --logpath /tmp/mongod.log'
 ports:
   - port: 3000

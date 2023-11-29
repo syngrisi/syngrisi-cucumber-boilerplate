@@ -1,11 +1,11 @@
 image: gitpod/workspace-mongodb
 
 tasks:
-  - name: 'Mongo'
-    init: 'mkdir -p /workspace/data && mongod --dbpath /workspace/data &'
-  - name: 'Install'
+  - name: 'Install Deps'
     init: 'npm i'
-  - name: 'Syngrisi'
+  - name: 'Start Mongo'
+    init: 'mkdir -p /workspace/data && mongod --dbpath /workspace/data'
+  - name: 'Start Syngrisi'
     init: gp sync-await bundle
     command: 'npx sy'
   - name: 'Chromedriver'

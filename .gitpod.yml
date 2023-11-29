@@ -22,8 +22,9 @@ tasks:
 #    command: npx chromedriver --port=9950
 #  - init: 'echo "Starting MongoDB" && mongod --fork --logpath /tmp/mongod.log'
 ports:
-  - port: 3000
-    onOpen: notify
+  - name: Syngrisi
+    port: 3000
+    onOpen: open-preview
 
 github:
   prebuilds:

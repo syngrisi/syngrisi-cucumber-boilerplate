@@ -25,8 +25,8 @@ export const config: WebdriverIO.Config = {
     // on a remote machine).
     runner: 'local',
     automationProtocol: 'webdriver',
-    hostname: process.env.GITPOD_HOST ? 'localhost' : undefined,
-    port: process.env.GITPOD_HOST ? 9950 : undefined,
+    // hostname: process.env.GITPOD_HOST ? 'localhost' : undefined,
+    // port: process.env.GITPOD_HOST ? 9950 : undefined,
     //
     // ==================
     // Specify Test Files
@@ -75,9 +75,9 @@ export const config: WebdriverIO.Config = {
         browserName: 'chrome',
         browserVersion: '118.0.5993.0',
         'goog:chromeOptions': {
-            args: ['--window-size=1920,1080', '--no-sandbox', '--disable-dev-shm-usage', '--headless'],
+            args: process.env.GITPOD_HOST ? ['--window-size=1920,1080', '--headless'] : ['--window-size=1920,1080'],
             excludeSwitches: ['enable-automation'],
-            binary: process.env.GITPOD_HOST ? 'chrome/linux-118.0.5993.0/chrome-linux64/chrome' : undefined,
+            // binary: process.env.GITPOD_HOST ? 'chrome/linux-118.0.5993.0/chrome-linux64/chrome' : undefined,
         },
         // 'wdio:chromedriverOptions': {
         //     port: 9950,

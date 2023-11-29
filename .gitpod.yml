@@ -2,7 +2,11 @@ image: gitpod/workspace-mongodb
 
 tasks:
   - name: Install Deps
-    init: npm i && npx @puppeteer/browsers install chrome@118.0.5993.0 && sudo apt-get install -y libgbm-dev &&  gp sync-done install
+    init: >
+      sudo apt-get install -y libgbm-dev &&
+      npx @puppeteer/browsers install chrome@118.0.5993.0 &&
+      npm i &&
+      gp sync-done install
   - name: Start Mongo
     init: gp sync-await install
     command: >

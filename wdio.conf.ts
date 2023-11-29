@@ -75,8 +75,9 @@ export const config: WebdriverIO.Config = {
         browserName: 'chrome',
         browserVersion: '118.0.5993.0',
         'goog:chromeOptions': {
-            args: ['--window-size=1920,1080'],
+            args: ['--window-size=1920,1080', '--no-sandbox', '--disable-dev-shm-usage', '--headless'],
             excludeSwitches: ['enable-automation'],
+            binary: process.env.GITPOD_HOST ? 'chrome/linux-118.0.5993.0/chrome-linux64/chrome' : undefined,
         },
         // 'wdio:chromedriverOptions': {
         //     port: 9950,

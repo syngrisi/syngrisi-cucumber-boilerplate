@@ -39,5 +39,7 @@ vscode:
   extensions:
     - alexkrechik.cucumberautocomplete
     - CucumberOpen.cucumber-official
+    - stateful.runme
+
 
 

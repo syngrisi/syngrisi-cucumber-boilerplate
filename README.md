@@ -11,7 +11,7 @@ https://user-images.githubusercontent.com/23633060/225082932-00bd7921-501b-43ae-
 
 To quickly preview the project without setting it up locally, you can click the "Open" button. Gitpod will then automatically set up an environment and start an instance for you.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://github.com/syngrisi/syngrisi-cucumber-boilerplate)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/syngrisi/syngrisi-cucumber-boilerplate)
 
 ### Set Up the Project
 

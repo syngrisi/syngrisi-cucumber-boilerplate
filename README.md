@@ -3,6 +3,8 @@
 This project extends the [WebdriverIO Cucumber Boilerplate](https://github.com/webdriverio/cucumber-boilerplate)
 with all its features, plus the integration of the [WDIO Syngrisi Cucumber Service](https://www.npmjs.com/package/wdio-syngrisi-cucumber-service) and additional step definitions for Syngrisi visual checks.
 
+The video demonstrates the operation of a boilerplate project, using a simple test case as an example:
+
 https://user-images.githubusercontent.com/23633060/225082932-00bd7921-501b-43ae-a7f1-78dc65ba758c.mp4
 
 ## Quick start

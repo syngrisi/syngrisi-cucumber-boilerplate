@@ -3,10 +3,12 @@
 This project extends the [WebdriverIO Cucumber Boilerplate](https://github.com/webdriverio/cucumber-boilerplate)
 with all its features, plus the integration of the [WDIO Syngrisi Cucumber Service](https://www.npmjs.com/package/wdio-syngrisi-cucumber-service) and additional step definitions for Syngrisi visual checks.
 
+https://user-images.githubusercontent.com/23633060/225082932-00bd7921-501b-43ae-a7f1-78dc65ba758c.mp4
 
 ## Quick start
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://github.com/syngrisi/syngrisi-cucumber-boilerplate)
 
-https://user-images.githubusercontent.com/23633060/225082932-00bd7921-501b-43ae-a7f1-78dc65ba758c.mp4
+To quickly preview the project without setting it up locally, you can click the "Open" button. Gitpod will then automatically set up an environment and start an instance for you.
 
 ### Set Up the Project
 

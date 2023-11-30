@@ -11,8 +11,8 @@ coverage
 
 # Editor files
 .idea
-.vscode
 !.vscode/extensions.json
+.vscode
 yarn.lock
 /.tmp/
 /chrome/

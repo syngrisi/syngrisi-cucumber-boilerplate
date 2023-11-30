@@ -10,4 +10,5 @@ export default async (type: 'url' | 'site', page: string) => {
      */
     const url = (type === 'url') ? page : browser.options.baseUrl + page;
     await browser.url(url);
+    await browser.pause(1500);
 };

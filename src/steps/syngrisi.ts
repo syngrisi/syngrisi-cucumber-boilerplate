@@ -13,7 +13,6 @@ const visualCheck = async (name: string, buffer: Buffer) => {
 When(/^I visually check viewport as "([^"]*)"$/, async function (name) {
     const imageBuffer = Buffer.from((await browser.takeScreenshot()), 'base64');
     await visualCheck(name, imageBuffer);
-
 });
 
 When(/^I visually check whole page as "([^"]*)"$/, async function (name) {

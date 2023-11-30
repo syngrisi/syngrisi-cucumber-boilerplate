@@ -16,7 +16,7 @@
   "cucumberautocomplete.steps": [
     "src/steps/*.ts"
   ],
-  "cucumberautocomplete.syncfeatures": "test/features/*.feature",
+  "cucumberautocomplete.syncfeatures": "src/features/*.feature",
   "cucumberautocomplete.smartSnippets": true,
   "cucumberautocomplete.stepsInvariants": true
 }

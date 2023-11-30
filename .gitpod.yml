@@ -14,9 +14,11 @@ tasks:
       mkdir -p /workspace/data && 
       mongod --dbpath /workspace/data &
       gp sync-done mongo
+      openMode: split-right
   - name: Start Syngrisi
     init: gp sync-await mongo
     command: npx sy
+    openMode: split-right
 
   - name: Open README.md
     init: gp sync-await mongo

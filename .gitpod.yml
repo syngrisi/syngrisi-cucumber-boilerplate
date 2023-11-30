@@ -2,7 +2,9 @@ image: gitpod/workspace-mongodb
 
 tasks:
   - name: Install Deps
-    before: gp open README.md
+    before: >
+      gp open README.md &&
+      gp open src/features/syngrisi/basic_example.feature
     init: >
       sudo apt-get update &&
       sudo apt-get install -y libgbm-dev &&

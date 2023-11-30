@@ -16,7 +16,8 @@ tasks:
     command: >
       mkdir -p /workspace/data && 
       mongod --dbpath /workspace/data &
-      gp sync-done mongo
+      gp sync-done mongo && 
+      exit 0
     openMode: split-right
   - name: Start Syngrisi
     init: gp sync-await mongo

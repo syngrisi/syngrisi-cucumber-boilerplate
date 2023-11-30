@@ -13,6 +13,11 @@ To quickly preview the project without setting it up locally, you can click the 
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/syngrisi/syngrisi-cucumber-boilerplate)
 
+The video demonstrates how to launch and start using a boilerplate project using gitpod:
+
+[![Video Title](asserts/video-preview.png)](https://www.youtube.com/watch?v=joWTfdDmOe0&ab_channel=Syngrisi)
+
+
 ### Set Up the Project
 
 ```shell

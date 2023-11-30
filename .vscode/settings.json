@@ -1,0 +1,22 @@
+{
+  "ego.power-tools": {
+    "buttons": [
+      {
+        "text": "S",
+        "color": "#00ff00",
+        "priority": 10,
+        "tooltip": "open Syngrisi",
+        "action": {
+          "type": "script",
+          "script": "openSyngrisiTab.cjs"
+        }
+      }
+    ]
+  },
+  "cucumberautocomplete.steps": [
+    "src/steps/*.ts"
+  ],
+  "cucumberautocomplete.syncfeatures": "test/features/*.feature",
+  "cucumberautocomplete.smartSnippets": true,
+  "cucumberautocomplete.stepsInvariants": true
+}

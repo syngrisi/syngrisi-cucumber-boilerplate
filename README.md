@@ -31,7 +31,16 @@ git clone git@github.com:syngrisi/syngrisi-cucumber-boilerplate.git .
 npm install
 ```
 
-### Run Tests
+## Quick Start
+
+### 1. Start the Syngrisi server
+
+To start the Syngrisi server which provides the backend for visual regression testing, run:
+```shell
+npm run sy:start
+```
+
+### 2. Execute Tests
 
 To run the demo tests, execute the following command:
 

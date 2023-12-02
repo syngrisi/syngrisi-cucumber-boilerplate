@@ -30,7 +30,7 @@
     "selenium"
   ],
   "scripts": {
-    "sy:start": "cross-env pm2_home=./.pm2  pm2 set pm2-logrotate:max_size 1M; cross-env pm2_home=./.pm2 pm2 start ./node_modules/syngrisi/server.js --name sy-vrt --no-autorestart  --log ./.pm2/syngrisi.log",
+    "sy:start": "cross-env pm2_home=./.pm2  pm2 set pm2-logrotate:max_size 1M; cross-env pm2_home=./.pm2 pm2 start ./node_modules/@syngrisi/syngrisi/server.js --name sy-vrt --no-autorestart  --log ./.pm2/syngrisi.log",
     "sy:stop": "cross-env pm2_home=./.pm2 pm2 stop sy-vrt",
     "sy:status": "cross-env pm2_home=./.pm2 pm2 status sy-vrt",
     "sy:show": "cross-env pm2_home=./.pm2 pm2 show sy-vrt",
@@ -74,6 +74,6 @@
   "dependencies": {
     "chromedriver": "^118.0.1",
     "pm2": "^5.3.0",
-    "syngrisi": "^2.1.33-alpha.0"
+    "@syngrisi/syngrisi": "^2.2.1"
   }
 }

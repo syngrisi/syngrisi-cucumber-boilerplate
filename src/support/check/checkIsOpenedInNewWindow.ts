@@ -23,7 +23,7 @@ export default async (expectedUrl: string, obsolete: never) => {
     const lastWindowHandle = windowHandles.slice(-1);
 
     // Make sure we focus on the last opened window handle
-    browser.switchToWindow(lastWindowHandle[0]);
+    await browser.switchToWindow(lastWindowHandle[0]);
 
     /**
      * Get the URL of the current browser window

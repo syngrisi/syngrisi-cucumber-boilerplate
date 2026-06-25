@@ -35,7 +35,6 @@ export default async (
      */
     let attributeValue = await $(selector)[command](attrName);
 
-    // eslint-disable-next-line
     expectedValue = isFinite(expectedValue as number) ?
         parseFloat(expectedValue as string)
         : expectedValue;

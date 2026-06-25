@@ -6,6 +6,9 @@
   "description": "Boilerplate project to run WebdriverIO tests with Cucumber",
   "homepage": "https://github.com/webdriverio/cucumber-boilerplate",
   "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
   "contributors": [
     "W. van Kuipers <github@pwnd.nl>",
     {
@@ -30,50 +33,53 @@
     "selenium"
   ],
   "scripts": {
-    "sy:start": "cross-env pm2_home=./.pm2  pm2 set pm2-logrotate:max_size 1M; cross-env pm2_home=./.pm2 pm2 start ./node_modules/@syngrisi/syngrisi/server.js --name sy-vrt --no-autorestart  --log ./.pm2/syngrisi.log",
+    "sy:start": "cross-env pm2_home=./.pm2  pm2 set pm2-logrotate:max_size 1M; cross-env pm2_home=./.pm2 SYNGRISI_AUTH=false pm2 start ./node_modules/@syngrisi/syngrisi/dist/server/server.js --name sy-vrt --no-autorestart  --log ./.pm2/syngrisi.log",
     "sy:stop": "cross-env pm2_home=./.pm2 pm2 stop sy-vrt",
     "sy:status": "cross-env pm2_home=./.pm2 pm2 status sy-vrt",
     "sy:show": "cross-env pm2_home=./.pm2 pm2 show sy-vrt",
     "sy:jstatus": "cross-env pm2_home=./.pm2 pm2 jlist sy-vrt",
     "sy:log": "cross-env pm2_home=./.pm2 pm2 log sy-vrt",
     "clean": "read -p \"Are you sure you want to clean the project? [y/n] \" REPLY; if [[ $REPLY =~ ^[Yy]$ ]]; then rm -R .git .github demo-app test .codeclimate.yml .travis.yml jest.json wdio.BUILD.conf.js src/features/**; fi",
-    "test": "wdio wdio.conf.ts --spec ./src/features/syngrisi/*.feature",
-    "test:lint": "eslint 'src/**/*.ts' 'test/**/*.js!(setup.js)'",
+    "test": "wdio run wdio.conf.ts --spec ./src/features/syngrisi/*.feature",
+    "test:lint": "eslint src test",
     "test:unit": "jest --config=jest.config.cjs --detectOpenHandles",
     "test:features": "wdio run wdio.BUILD.conf.ts",
     "wdio": "wdio run wdio.BUILD.conf.ts"
   },
   "devDependencies": {
-    "@babel/runtime": "^7.23.2",
-    "@types/jest": "^29.5.5",
-    "@typescript-eslint/eslint-plugin": "^6.8.0",
-    "@typescript-eslint/parser": "^6.8.0",
-    "@wdio/cli": "^8.19.0",
-    "@wdio/config": "^8.19.0",
-    "@wdio/cucumber-framework": "^8.19.0",
-    "@wdio/globals": "^8.19.0",
-    "@wdio/local-runner": "^8.19.0",
-    "@wdio/spec-reporter": "^8.19.0",
-    "@wdio/static-server-service": "^8.19.0",
-    "cross-env": "^7.0.3",
-    "eslint": "^8.51.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.28.1",
-    "eslint-plugin-wdio": "^8.8.7",
+    "@cucumber/cucumber": "^10.3.1",
+    "@eslint/js": "^9.39.4",
+    "@types/jest": "^30.0.0",
+    "@wdio/cli": "^9.29.0",
+    "@wdio/config": "^9.29.0",
+    "@wdio/cucumber-framework": "^9.29.0",
+    "@wdio/globals": "^9.29.0",
+    "@wdio/local-runner": "^9.29.0",
+    "@wdio/spec-reporter": "^9.29.0",
+    "@wdio/static-server-service": "^9.29.0",
+    "@wdio/visual-service": "^9.2.4",
+    "cross-env": "^10.1.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-wdio": "^9.29.0",
+    "globals": "^16.5.0",
     "http-server": "^14.1.1",
-    "jest": "^29.7.0",
-    "jest-circus": "^29.7.0",
+    "jest": "^30.4.2",
+    "jest-circus": "^30.4.2",
     "npm-run-all": "^4.1.5",
-    "ts-jest": "^29.1.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.2.2",
-    "wdio-image-comparison-service": "^5.0.3",
-    "wdio-syngrisi-cucumber-service": "^2.1.25-alpha.0",
-    "webdriverio": "^8.19.0"
+    "ts-jest": "^29.4.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.62.0",
+    "wdio-syngrisi-cucumber-service": "^3.6.0"
   },
   "dependencies": {
-    "chromedriver": "^118.0.1",
-    "pm2": "^5.3.0",
-    "@syngrisi/syngrisi": "^2.2.1"
+    "pm2": "^7.0.1",
+    "@syngrisi/syngrisi": "^3.5.1"
+  },
+  "overrides": {
+    "@wdio/logger": {
+      "chalk": "^4.1.2",
+      "strip-ansi": "^6.0.1"
+    }
   }
 }

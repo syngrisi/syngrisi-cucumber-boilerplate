@@ -3,6 +3,14 @@
 This project extends the [WebdriverIO Cucumber Boilerplate](https://github.com/webdriverio/cucumber-boilerplate)
 with all its features, plus the integration of the [WDIO Syngrisi Cucumber Service](https://www.npmjs.com/package/wdio-syngrisi-cucumber-service) and additional step definitions for Syngrisi visual checks.
 
+> Built on WebdriverIO v9, `@syngrisi/*` v3, and `@wdio/visual-service` (used for full-page screenshots).
+
+## Requirements
+
+- Node.js >= 22.19.0
+- MongoDB >= 8 running locally — the Syngrisi server stores its data there (default URI `mongodb://127.0.0.1:27017/SyngrisiDb`)
+- Google Chrome (WebdriverIO v9 auto-manages the matching chromedriver)
+
 The video demonstrates the operation of a boilerplate project, using a simple test case as an example:
 
 https://user-images.githubusercontent.com/23633060/225082932-00bd7921-501b-43ae-a7f1-78dc65ba758c.mp4
@@ -39,6 +47,7 @@ To start the Syngrisi server which provides the backend for visual regression te
 ```shell
 npm run sy:start
 ```
+The `sy:start` script launches the server with authentication disabled (`SYNGRISI_AUTH=false`), so the empty `apikey` works out of the box. For a real deployment, enable authentication and set `apikey` to a key from your Syngrisi account settings.
 
 ### 2. Execute Tests
 
@@ -51,7 +60,7 @@ npm test
 To run a specific feature, use:
 
 ```shell {"background":"false","name":"BASIC TEST EXAMPLE","promptEnv":"true"}
-npx wdio wdio.conf.ts --spec src/features/syngrisi/basic_example.feature
+npx wdio run wdio.conf.ts --spec src/features/syngrisi/basic_example.feature
 ```
 
 ### Reviewing Test Results with Syngrisi
@@ -66,8 +75,8 @@ This project utilizes the `wdio-syngrisi-cucumber-service` which can be configur
     'syngrisi-cucumber',
     {
         endpoint: `<your-syngrisi-server-url>`, // the Syngrisi server url, default is http://localhost:3000
-        apikey: `<your-api-key>`, // Autorization API key, you can obtain it from your Syngrisi account settings 
-        app: `<your-project-name>`, // Specify the project name 
+        apikey: `<your-api-key>`, // Authorization API key, you can obtain it from your Syngrisi account settings 
+        project: `<your-project-name>`, // Specify the project name 
         branch: '<your-branch>', // The version control branch name.
         runname: `<your-run-name>`, // Run name allows you to group tests by runs using Syngrisi UI  
         runident: `<your-run-ident>`, // Unique run identifier
@@ -89,7 +98,7 @@ Viewport Check: `When I visually check viewport as "<name>"`
 
 Full Page Check: `I visually check whole page as "<name>"`
 
-Element Check: `I visually check the "<selector>" element as "<name>"`
+Element Check: `I visually check "<selector>" element as "<name>"`
 
 Create visual check for element with particular selector
 

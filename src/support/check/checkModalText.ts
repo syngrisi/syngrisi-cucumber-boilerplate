@@ -32,7 +32,7 @@ export default async (
                 + `"${expectedText}", instead found "${text}"`
             );
         }
-    } catch (e) {
-        throw new Error(`A ${modalType} was not opened when it should have been opened`);
+    } catch {
+        throw new Error(`A  was not opened when it should have been opened`);
     }
 };

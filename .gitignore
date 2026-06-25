@@ -16,3 +16,7 @@ coverage
 yarn.lock
 /.tmp/
 /chrome/
+.sy-data/
+.pm2/
+/logs/
+.snapshots-images/

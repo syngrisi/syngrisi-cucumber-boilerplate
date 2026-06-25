@@ -1,13 +1,13 @@
 import { hooks } from './src/support/hooks.js';
 
 const syngrisiHost = process.env.SYNGRISI_HOST || 'localhost';
-const syngrisiPort = process.env.SYNGRISI_HOST || '3000';
+const syngrisiPort = process.env.SYNGRISI_PORT || '3000';
 const syngrisiService = [
     'syngrisi-cucumber',
     {
         endpoint: `http://${syngrisiHost}:${syngrisiPort}/`,
         apikey: process.env.SYNGRISI_API_KEY || '',
-        app: process.env.SYNGRISI_PROJECT || 'My project',
+        project: process.env.SYNGRISI_PROJECT || 'My project',
         branch: 'master',
         runname: process.env.RUN_NAME,
         runident: process.env.RUN_IDENT,
@@ -73,11 +73,13 @@ export const config: WebdriverIO.Config = {
         maxInstances: 5,
         //
         browserName: 'chrome',
-        browserVersion: '118.0.5993.0',
+        // WebdriverIO v9 auto-manages the matching browser/driver, so no version is pinned.
         'goog:chromeOptions': {
-            args: process.env.GITPOD_HOST ? ['--window-size=1920,1080', '--headless'] : ['--window-size=1920,1080'],
+            // Run headless in CI / when HEADED is not set; pass HEADED=true for a visible browser.
+            args: (process.env.HEADED === 'true')
+                ? ['--window-size=1920,1080']
+                : ['--window-size=1920,1080', '--headless=new', '--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage'],
             excludeSwitches: ['enable-automation'],
-            // binary: process.env.GITPOD_HOST ? 'chrome/linux-118.0.5993.0/chrome-linux64/chrome' : undefined,
         },
         // 'wdio:chromedriverOptions': {
         //     port: 9950,
@@ -139,7 +141,7 @@ export const config: WebdriverIO.Config = {
 
     services: [
         syngrisiService,
-        'image-comparison',
+        'visual',
     ],
     //
     // Framework you want to run your specs with.

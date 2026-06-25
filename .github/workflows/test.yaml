@@ -17,19 +17,30 @@ jobs:
             - uses: ./.github/workflows/actions/setup
             - name: Unit Test
               run: npm run test:unit
-    e2e:
+    syngrisi:
         runs-on: ubuntu-latest
         needs: [lint, unit]
-        strategy:
-            matrix:
-                shard: [1/4, 2/4, 3/4, 4/4]
+        services:
+            mongodb:
+                image: mongo:8
+                ports:
+                    - 27017:27017
         steps:
             - uses: actions/checkout@v4
             - uses: ./.github/workflows/actions/setup
-            - name: E2E Test
-              run: npm run test:features -- --shard ${{ matrix.shard }}
-            - uses: actions/upload-artifact@v1
+            - name: Start Syngrisi server
+              run: npm run sy:start
+              env:
+                SYNGRISI_DB_URI: 'mongodb://127.0.0.1:27017/SyngrisiDb'
+            - name: Wait for Syngrisi server
+              run: npx wait-on http://localhost:3000 --timeout 60000
+            - name: Visual regression tests
+              run: npm test
+            - name: Stop Syngrisi server
+              if: always()
+              run: npm run sy:stop
+            - uses: actions/upload-artifact@v4
               if: failure()
               with:
-                name: logs-${{ matrix.shard }}
+                name: logs
                 path: logs

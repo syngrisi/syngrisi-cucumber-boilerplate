@@ -4,6 +4,7 @@ describe('openWebsite', () => {
     beforeEach(() => {
         global.browser = {
             url: jest.fn(),
+            pause: jest.fn(),
             options: {
                 baseUrl: 'http://mysite.com',
             },

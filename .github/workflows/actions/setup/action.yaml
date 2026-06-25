@@ -3,13 +3,13 @@ description: "sets the node version & initializes core dependencies"
 runs:
     using: composite
     steps:
-        - uses: actions/setup-node@v3
+        - uses: actions/setup-node@v4
           with:
-            node-version: 18
+            node-version: 22
 
         - name: Cache dependencies
           id: cache
-          uses: actions/cache@v3
+          uses: actions/cache@v4
           with:
             path: ./node_modules
             key: modules-${{ hashFiles('package-lock.json') }}
